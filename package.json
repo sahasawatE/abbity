@@ -1,0 +1,32 @@
+{
+  "name": "abbot-cli",
+  "version": "1.0.0",
+  "description": "A minimal Node.js CLI.",
+  "type": "module",
+  "bin": {
+    "abbot-cli": "dist/index.js"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning --import ./scripts/alias-loader.mjs src/index.ts",
+    "build": "tsc && tsc-alias",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "packageManager": "pnpm@11.5.1",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.9.2",
+    "eslint": "^10.4.1",
+    "tsc-alias": "^1.8.17",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.0"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.5.1",
+    "chalk": "^5.6.2",
+    "commander": "^15.0.0",
+    "pathe": "^2.0.3"
+  }
+}
