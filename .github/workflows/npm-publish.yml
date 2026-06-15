@@ -11,18 +11,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
-      - uses: pnpm/action-setup@v6
-        name: Install pnpm
-        with:
-          cache: true
-
-      - name: Install dependencies
-        run: pnpm install
       - uses: actions/setup-node@v6
         with:
           node-version: "24.x"
-      - run: pnpm build
+      - name: reset npm
+        run: npm ci
+      - name: install
+        run: npm install
+      - name: build
+        run: npm build
       - name: Upload build folder to artifact
         uses: actions/upload-artifact@v4
         with: 
@@ -36,10 +33,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-        name: Install pnpm
-        with:
-          cache: true
       - uses: actions/setup-node@v6
         with:
           node-version: "24.x"
@@ -48,6 +41,6 @@ jobs:
         with:
           name: abbity-build
           path: dist/
-      - run: pnpm publish packages/components --access public --no-git-checks
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
