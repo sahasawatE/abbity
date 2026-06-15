@@ -48,6 +48,7 @@ jobs:
         with:
           name: abbity-build
           path: dist/
+      - run: pnpm login
       - run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
