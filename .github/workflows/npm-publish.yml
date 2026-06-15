@@ -42,7 +42,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - uses: actions/download-artifact@v4
         with:
-          name: hokui-build
+          name: abbity-build
           path: dist/
       - run: npm publish --access public
         env:
