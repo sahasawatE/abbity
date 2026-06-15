@@ -1,6 +1,6 @@
 {
-  "name": "abbot-cli",
-  "version": "1.0.0",
+  "name": "abbity",
+  "version": "0.0.1",
   "description": "A minimal Node.js CLI.",
   "type": "module",
   "bin": {
