@@ -76,7 +76,7 @@ export async function initializingAction(results: InitResults): Promise<void> {
   ]);
 
   if (results.additionalTools.includes("eslint")) {
-    const eslintTemplate = "https://gitlabsvr.abbot.tech/module/eslint.git";
+    const eslintTemplate = "git@gitlabsvr.abbot.tech:module/eslint.git";
 
     await tasks([
       {

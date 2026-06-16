@@ -1,8 +1,8 @@
 export const REPO_URL = {
   react: {
     vite: {
-      none: "https://gitlabsvr.abbot.tech/module/react-vite-template.git",
-      antd: "https://gitlabsvr.abbot.tech/module/react-vite-antd-template.git",
+      none: "git@gitlabsvr.abbot.tech:module/react-vite-template.git",
+      antd: "git@gitlabsvr.abbot.tech:module/react-vite-antd-template.git",
     },
     next: {
       app: {
