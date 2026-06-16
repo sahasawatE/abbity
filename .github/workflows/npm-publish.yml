@@ -65,6 +65,6 @@ jobs:
           name: abbity-build
           path: dist/
 
-      - run: npm publish --access public --no-git-checks
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
