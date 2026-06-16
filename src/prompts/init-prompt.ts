@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { select, confirm, text, multiselect } from "@clack/prompts";
+import { select, text, multiselect } from "@clack/prompts";
 import {
   availableFrameworks,
   availableMetaReactFrameworks,
@@ -91,25 +91,6 @@ export async function selectAdditionalTools() {
       options: availableAdditionalTools,
       initialValues: ["eslint", "prettier"],
       required: false,
-    }),
-  );
-}
-
-export async function inputImportAliases() {
-  const wantToInputImportAliases = await ifCancel(
-    confirm({
-      message: chalk.gray("Do you want to input import aliases?"),
-      initialValue: true,
-    }),
-  );
-  if (!wantToInputImportAliases) {
-    return null;
-  }
-
-  return ifCancel(
-    text({
-      message: chalk.gray("Enter the import aliases"),
-      placeholder: "@/~",
     }),
   );
 }

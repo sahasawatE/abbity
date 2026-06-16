@@ -6,7 +6,6 @@ import {
   selectMetaFramework,
   selectUI,
   selectAdditionalTools,
-  inputImportAliases,
   inputProjectPath,
   selectPackageManager,
 } from "@/prompts/init-prompt";
@@ -25,7 +24,6 @@ export async function askingQuestionsInit(projectName: string) {
   const packageManager = await selectPackageManager();
   const framework = await selectFramework();
   const metaFramework = await selectMetaFramework(framework);
-  const importAliases = await inputImportAliases();
   const ui = await selectUI(framework);
   const additionalTools = await selectAdditionalTools();
 
@@ -34,7 +32,6 @@ export async function askingQuestionsInit(projectName: string) {
     packageManager,
     framework,
     metaFramework,
-    importAliases,
     ui,
     additionalTools,
   };

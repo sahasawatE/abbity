@@ -1,4 +1,5 @@
 import { exec } from "child_process";
+import { info } from "@/helper/packageManager";
 
 export function runCommand(command: string, cwd?: string) {
   return new Promise((resolve, reject) => {
@@ -23,7 +24,10 @@ export function installDependencies(packageManager: string, cwd?: string) {
   return runCommand(`${packageManager} install`, cwd);
 }
 
-export function installEslintDependencies(packageManager: string, cwd?: string) {
+export function installEslintDependencies(
+  packageManager: string,
+  cwd?: string,
+) {
   const packageNames = [
     "eslint",
     "@eslint/js",
@@ -33,7 +37,7 @@ export function installEslintDependencies(packageManager: string, cwd?: string) 
     "typescript-eslint",
   ];
 
-  const installCommand = packageManager === "yarn" ? "add -D" : "install -D";
+  const installCommand = info[packageManager as keyof typeof info].install;
 
   return runCommand(
     `${packageManager} ${installCommand} ${packageNames.join(" ")}`,
