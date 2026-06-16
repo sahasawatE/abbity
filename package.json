@@ -3,8 +3,30 @@
   "version": "0.0.2",
   "description": "A minimal Node.js CLI.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sahasawatE/abbity"
+  },
+  "author": {
+    "name": "SahasawatE",
+    "email": "hoklok3@gmail.com",
+    "url": "https://github.com/sahasawatE"
+  },
+  "keywords": [
+    "cli", "scaffolding", "project", "template", "generator"
+  ],
+  "homepage": "https://github.com/sahasawatE/abbity",
+  "bugs": {
+    "url": "https://github.com/sahasawatE/abbity/issues"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "files": [
+    "dist"
+  ],
   "bin": {
-    "abbot-cli": "dist/index.js"
+    "abbity": "dist/index.js"
   },
   "scripts": {
     "start": "node --disable-warning=ExperimentalWarning --import ./scripts/alias-loader.mjs src/index.ts",
