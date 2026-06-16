@@ -41,7 +41,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -67,4 +70,4 @@ jobs:
 
       - run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
