@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import chalk from "chalk";
-import { intro, outro, tasks, note, cancel } from "@clack/prompts";
-import { initAction } from "@/actions/init-action";
+import { intro, outro, note } from "@clack/prompts";
 import {
-  cloneTemplate,
-  createFolder,
-  installDependencies,
-} from "@/helper/command";
+  askingQuestionsInit,
+  initializingAction,
+  type InitResults,
+} from "@/actions/init-action";
 import { displayResult } from "@/helper/displayResult";
 
 const abbot = new Command();
@@ -28,41 +27,10 @@ abbot
       ),
     );
 
-    // action
-    const results = await initAction(name);
-
-    await tasks([
-      {
-        title: "Initializing project",
-        task: async () => {
-          try {
-            await createFolder(results.projectPath);
-            await cloneTemplate(results.ui, results.projectPath);
-            return chalk.cyan("✅ Cloned template successfully");
-          } catch (error) {
-            cancel(`${error}`);
-            process.exit(1);
-          }
-        },
-      },
-    ]);
-
-    if (results.installDependencies) {
-      await tasks([
-        {
-          title: "Installing dependencies",
-          task: async () => {
-            try {
-              await installDependencies(results.packageManager);
-              return chalk.cyan("✅ Installed dependencies successfully");
-            } catch (error) {
-              cancel(`${error}`);
-              process.exit(1);
-            }
-          },
-        },
-      ]);
-    }
+    // asking questions
+    const results: InitResults = await askingQuestionsInit(name);
+    // initializing project
+    await initializingAction(results);
 
     note(
       displayResult(results.packageManager, results.projectPath),

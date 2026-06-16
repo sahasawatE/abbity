@@ -1,6 +1,6 @@
 {
   "name": "abbity",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A minimal Node.js CLI.",
   "type": "module",
   "repository": {
@@ -13,7 +13,11 @@
     "url": "https://github.com/sahasawatE"
   },
   "keywords": [
-    "cli", "scaffolding", "project", "template", "generator"
+    "cli",
+    "scaffolding",
+    "project",
+    "template",
+    "generator"
   ],
   "homepage": "https://github.com/sahasawatE/abbity",
   "bugs": {
@@ -41,6 +45,9 @@
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.9.2",
     "eslint": "^10.4.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.6.0",
     "tsc-alias": "^1.8.17",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.0"

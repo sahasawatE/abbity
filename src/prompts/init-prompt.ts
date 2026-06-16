@@ -113,12 +113,3 @@ export async function inputImportAliases() {
     }),
   );
 }
-
-export async function confirmInstallDependencies() {
-  return ifCancel(
-    confirm({
-      message: chalk.gray("Do you want to install dependencies?"),
-      initialValue: true,
-    }),
-  );
-}

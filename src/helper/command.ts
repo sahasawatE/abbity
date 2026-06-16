@@ -1,8 +1,8 @@
 import { exec } from "child_process";
 
-export function runCommand(command: string) {
+export function runCommand(command: string, cwd?: string) {
   return new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
+    exec(command, { cwd }, (error, stdout, stderr) => {
       if (error) {
         reject(`Execute Error: ${error.message}`);
       }
@@ -19,6 +19,24 @@ export function cloneTemplate(repoUrl: string, folderName: string) {
   return runCommand(`git clone ${repoUrl} ${folderName}`);
 }
 
-export function installDependencies(packageManager: string) {
-  return runCommand(`${packageManager} install`);
+export function installDependencies(packageManager: string, cwd?: string) {
+  return runCommand(`${packageManager} install`, cwd);
+}
+
+export function installEslintDependencies(packageManager: string, cwd?: string) {
+  const packageNames = [
+    "eslint",
+    "@eslint/js",
+    "globals",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-react-refresh",
+    "typescript-eslint",
+  ];
+
+  const installCommand = packageManager === "yarn" ? "add -D" : "install -D";
+
+  return runCommand(
+    `${packageManager} ${installCommand} ${packageNames.join(" ")}`,
+    cwd,
+  );
 }
