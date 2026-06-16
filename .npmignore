@@ -1,0 +1,11 @@
+src/
+scripts/
+.github/
+.cursor/
+.pnpm-store/
+node_modules/
+eslint.config.js
+tsconfig.json
+pnpm-lock.yaml
+*.tsbuildinfo
+.gitignore
