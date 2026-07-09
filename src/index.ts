@@ -12,6 +12,7 @@ import {
   LOCAL_VERSION,
   getLatestVersion,
   isNewerVersion,
+  notifyIfUpdateAvailable,
 } from "@/helper/version";
 
 const abbity = new Command();
@@ -20,6 +21,10 @@ abbity
   .name("abbity")
   .description("CLI to initialize a new frontend project")
   .version(LOCAL_VERSION);
+
+abbity.hook("preAction", async () => {
+  await notifyIfUpdateAvailable();
+});
 
 abbity
   .command("init")
