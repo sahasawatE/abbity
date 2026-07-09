@@ -99,4 +99,4 @@ abbity
     outro(chalk.green(`🎉 Updated checked !`));
   });
 
-abbity.parse();
+await abbity.parseAsync();
